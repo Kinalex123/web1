@@ -14,15 +14,15 @@ def find_business(ll):
     "type": "biz"
     }
 
-response = requests.get(search_api_server, params=search_params)
-if not response:
-    raise RuntimeError(
-    """Ошибка выполнения запроса:
-    {request}
-    Http статус: {status} ({reason})""".format(
-    request=search_api_server, status=response.status_code, reason=response.reason))
+    response = requests.get(search_api_server, params=search_params)
+    if not response:
+        raise RuntimeError(
+        """Ошибка выполнения запроса:
+        {request}
+        Http статус: {status} ({reason})""".format(
+        request=search_api_server, status=response.status_code, reason=response.reason))
 
-json_response = response.json()
+    json_response = response.json()
 
-organizations = json_response["features"]
-return organizations[0] if organizations else None
+    organizations = json_response["features"]
+    return organizations[0] if organizations else None
